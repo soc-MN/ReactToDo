@@ -1,11 +1,15 @@
 
+
+
   var CheckList = React.createClass({
     delete: function(i) {
       this.props.delete(i);
     },
     
     displayTask: function(task,i) {
-      return <li onClick={this.delete.bind(this,i)}>{task}</li>
+      return <li><div onClick={this.delete.bind(this,i)}></div>
+             {task}
+             </li>
     },
     
     render: function() {

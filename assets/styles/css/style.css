@@ -41,10 +41,15 @@ ul {
     color: #666666;
     padding: 10px 0;
     border-bottom: #dddddd 1px solid; }
-    ul li:before {
-      content: "\f054";
-      font-family: FontAwesome;
-      margin-right: 20px; }
+    ul li div {
+      width: 20px;
+      float: left;
+      padding-top: 4px;
+      cursor: pointer; }
+      ul li div:before {
+        content: "\F014";
+        font-family: FontAwesome;
+        margin-right: 20px; }
 
 input {
   width: 100%;

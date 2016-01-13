@@ -49,11 +49,20 @@ ul{
 		border-bottom:$sep 1px solid;
 		
 
-			&:before{
-				content: "\f054"; 
+	    div{
+	       width:20px;
+	       float:left;
+	       padding-top:4px;
+	       cursor:pointer;
+	       
+	    	&:before{
+				content: "\F014"; 
 	    		font-family: FontAwesome;
 	    		margin-right:20px;
+
 	    	}
+
+	    }
 	}
 }
 
