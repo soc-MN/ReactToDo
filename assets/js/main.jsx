@@ -15,6 +15,7 @@
     render: function() {
       
       return (
+
         <ul >
           { this.props.items.map(this.displayTask) }
         </ul>  
@@ -27,13 +28,15 @@
     getInitialState: function() {
       return {
         items: [],
-        task: ''
+        task: '',
+        count: 0
       }
     },
     addTask: function(e) {
       this.setState({
         items: this.state.items.concat([this.state.task]),
-        task: ''
+        task: '',
+        count: this.state.items.length+1
       });
     },
     onChange: function(e) {
@@ -41,12 +44,19 @@
     },
     delete: function(i) {
       delete this.state.items[i];
-      this.setState({items: this.state.items});
+      delete this.state.count;
+      this.setState({
+        items: this.state.items,
+        count: this.state.items.length-1
+      });
+     
     },
+
     render: function() {
       return (
         <div>
           <h1>My ToDo List</h1>
+          <h4> No. items todo: {this.state.count}</h4>
           <CheckList items={this.state.items} delete={this.delete} />
           
           <input onChange={this.onChange} value={this.state.task}/>            

@@ -15,6 +15,7 @@
     render: function() {
       
       return (
+
         React.createElement("ul", null, 
            this.props.items.map(this.displayTask) 
         )  
@@ -27,13 +28,15 @@
     getInitialState: function() {
       return {
         items: [],
-        task: ''
+        task: '',
+        count: 0
       }
     },
     addTask: function(e) {
       this.setState({
         items: this.state.items.concat([this.state.task]),
-        task: ''
+        task: '',
+        count: this.state.items.length+1
       });
     },
     onChange: function(e) {
@@ -41,12 +44,19 @@
     },
     delete: function(i) {
       delete this.state.items[i];
-      this.setState({items: this.state.items});
+      delete this.state.count;
+      this.setState({
+        items: this.state.items,
+        count: this.state.items.length-1
+      });
+     
     },
+
     render: function() {
       return (
         React.createElement("div", null, 
           React.createElement("h1", null, "My ToDo List"), 
+          React.createElement("h4", null, " No. items todo: ", this.state.count), 
           React.createElement(CheckList, {items: this.state.items, delete: this.delete}), 
           
           React.createElement("input", {onChange: this.onChange, value: this.state.task}), 
